@@ -33,6 +33,7 @@
     "bingapis",
     "coinranking",
     "hoverable",
-    "rapidapi"
+    "rapidapi",
+    "timeperiod"
   ]
 }

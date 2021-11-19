@@ -11,7 +11,6 @@ export function Homepage() {
   // @ts-ignore
   const { data, isFetching, error, isLoading, isSuccess, isError } = useGetCryptosQuery(10);
   const globalStatsData = data?.data?.stats;
-  console.log(globalStatsData);
 
   if (isFetching) return <div>Fetching data ...</div>;
 
@@ -53,7 +52,7 @@ export function Homepage() {
           Latest Crypto News
         </Title>
         <Title level={3} className='show-more'>
-          <Link to='/cryptocurrencies'>Show more</Link>
+          <Link to='/news'>Show more</Link>
         </Title>
       </div>
       <News simplifiedView />
