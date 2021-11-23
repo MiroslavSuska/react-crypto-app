@@ -53,7 +53,7 @@ export function News(props: Props) {
           </Col>
         )}
 
-        {cryptoNewsData.value.map((news, index) => (
+        {cryptoNewsData.value.map((news, index: number) => (
           <Col xs={24} sm={12} lg={8} key={index}>
             <Card hoverable className='news-card'>
               <a href={news.url} target='_blank' rel='noreferrer'>

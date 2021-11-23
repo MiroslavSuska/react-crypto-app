@@ -7,6 +7,8 @@ export const store = configureStore({
     [cryptoApi.reducerPath]: cryptoApi.reducer,
     [cryptoNewsApi.reducerPath]: cryptoNewsApi.reducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(cryptoApi.middleware).concat(cryptoNewsApi.middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

@@ -10,8 +10,7 @@ const { Title } = Typography;
 const numOfCryptos = 10;
 
 export function Homepage() {
-  const { data, isFetching, error, isLoading, isSuccess, isError } =
-    useGetCryptosQuery(numOfCryptos);
+  const { data, isFetching } = useGetCryptosQuery(numOfCryptos);
   const globalStatsData = data?.data?.stats;
 
   if (isFetching) return <Loader />;

@@ -1,10 +1,19 @@
 import { Col, Row, Typography } from 'antd';
 import { Line } from 'react-chartjs-2';
 import React from 'react';
+import millify from 'millify';
+
+type coinHistoryType = {
+  change: number;
+  history: {
+    price: string;
+    timestamp: number;
+  }[];
+};
 
 type Props = {
-  coinHistory: any;
-  currentPrice: number;
+  coinHistory: coinHistoryType;
+  currentPrice: string;
   coinName: string;
 };
 
@@ -12,14 +21,12 @@ const { Title } = Typography;
 
 export const LineChart = (props: Props) => {
   const { coinHistory, currentPrice, coinName } = props;
-  const coinPrice = [];
-  const coinTimestamp = [];
+  const coinPrice: string[] = [];
+  const coinTimestamp: string[] = [];
 
-  for (let i = 0; i < coinHistory?.data?.history?.length; i++) {
-    //@ts-ignore
-    coinPrice.push(coinHistory.data.history[i].price);
-    //@ts-ignore
-    coinTimestamp.push(new Date(coinHistory.data.history[i].timestamp).toLocaleDateString());
+  for (let i = 0; i < coinHistory?.history.length; i++) {
+    coinPrice.push(coinHistory.history[i].price);
+    coinTimestamp.push(new Date(coinHistory.history[i].timestamp).toLocaleDateString());
   }
 
   const data = {
@@ -36,15 +43,15 @@ export const LineChart = (props: Props) => {
   };
 
   const options = {
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
+    // scales: {
+    //   yAxes: [
+    //     {
+    //       ticks: {
+    //         beginAtZero: true,
+    //       },
+    //     },
+    //   ],
+    // },
   };
 
   return (
@@ -55,10 +62,10 @@ export const LineChart = (props: Props) => {
         </Title>
         <Col className='price-container'>
           <Title level={5} className='price-change'>
-            {coinHistory?.data?.change}%
+            Change: {coinHistory?.change}%
           </Title>
           <Title level={5} className='current-change'>
-            Current {coinName} Price: $ {currentPrice}
+            Current {coinName} Price: $ {millify(parseInt(currentPrice))}
           </Title>
         </Col>
       </Row>

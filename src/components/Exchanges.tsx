@@ -36,7 +36,7 @@ export function Exchanges() {
       <Row>
         {cryptoExchangesData.map(exchangeData => (
           <Col key={exchangeData.id} span={24}>
-            <Collapse>
+            <Collapse accordion={true}>
               <Panel
                 key={exchangeData.id}
                 showArrow={false}
