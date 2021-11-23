@@ -1,4 +1,5 @@
 import { Avatar, Card, Col, Input, Row, Select, Typography } from 'antd';
+import { Loader } from './Loader';
 import { SelectValue } from 'antd/lib/select';
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsAPI';
 import { useGetCryptosQuery } from '../services/cryptoAPI';
@@ -25,7 +26,7 @@ export function News(props: Props) {
     setNewsCategory(value);
   };
 
-  if (isFetching) return <div>Fetching data ...</div>;
+  if (isFetching) return <Loader />;
 
   return (
     <div>

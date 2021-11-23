@@ -350,6 +350,9 @@ a:hover {
 .exchange-image {
   margin: 0px 10px !important;
 }
+.exchange-header-row {
+  margin-bottom: 20px;
+}
 .search-crypto {
   margin: 20px auto 30px auto;
   width: 250px;

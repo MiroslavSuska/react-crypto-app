@@ -34,10 +34,6 @@ function App() {
         </Layout>
 
         <div className='footer'>
-          <Typography.Title level={5}>
-            Cryptocurrency application <br />
-            @2021
-          </Typography.Title>
           <Space>
             <Link to='/'>Home</Link>
             <Link to='/news'>News</Link>

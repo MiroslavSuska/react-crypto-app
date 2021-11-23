@@ -11,6 +11,7 @@ import {
 } from '@ant-design/icons';
 import { Col, Row, Select, Typography } from 'antd';
 import { LineChart } from './LineChart';
+import { Loader } from './Loader';
 import { SelectValue } from 'antd/lib/select';
 import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../services/cryptoAPI';
 import { useParams } from 'react-router-dom';
@@ -32,7 +33,7 @@ export function CryptoDetail() {
   const { data, isFetching } = useGetCryptoDetailsQuery(cryptoId);
   const { data: coinHistoryData } = useGetCryptoHistoryQuery({ cryptoId, timePeriod });
   const cryptoDetails = data?.data?.coin;
-  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+  const time = ['24h', '7d', '30d', '1y', '5y'];
 
   // const stats = [
   //   {
@@ -106,13 +107,13 @@ export function CryptoDetail() {
     },
   ];
 
-  console.log(cryptoDetails?.circulatingSupply);
+  //console.log(cryptoDetails?.circulatingSupply);
 
   const handleSelectChange = (value: SelectValue) => {
     setTimePeriod(value);
   };
 
-  if (isFetching) return <div>Fetching data ...</div>;
+  if (isFetching) return <Loader />;
 
   return (
     <Col className='coin-detail-container'>

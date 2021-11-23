@@ -1,18 +1,20 @@
 import { Col, Row, Statistic, Typography } from 'antd';
 import { Cryptocurrencies, News } from './';
 import { Link } from 'react-router-dom';
+import { Loader } from './Loader';
 import { useGetCryptosQuery } from '../services/cryptoAPI';
 import React from 'react';
 import millify from 'millify';
 
 const { Title } = Typography;
+const numOfCryptos = 10;
 
 export function Homepage() {
-  // @ts-ignore
-  const { data, isFetching, error, isLoading, isSuccess, isError } = useGetCryptosQuery(10);
+  const { data, isFetching, error, isLoading, isSuccess, isError } =
+    useGetCryptosQuery(numOfCryptos);
   const globalStatsData = data?.data?.stats;
 
-  if (isFetching) return <div>Fetching data ...</div>;
+  if (isFetching) return <Loader />;
 
   return (
     <div>

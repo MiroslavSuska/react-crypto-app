@@ -2,6 +2,7 @@ import { Card, Col, Input, Row } from 'antd';
 import { Link } from 'react-router-dom';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
+import { Loader } from './Loader';
 import { useGetCryptosQuery } from '../services/cryptoAPI';
 import millify from 'millify';
 
@@ -27,7 +28,7 @@ export function Cryptocurrencies(props: Props) {
     setSearchTerm(e.target.value);
   };
 
-  if (isFetching) return <div>Fetching data ...</div>;
+  if (isFetching) return <Loader />;
 
   return (
     <div>
